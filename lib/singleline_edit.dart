@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
 
-class SingleLineEdit extends StatefulWidget {
+class MinimalTextEdit extends StatefulWidget {
   final String textLine;
   final String title;
-  final String label;
-  final String hintText;
+  final String? hintText;
   final TextAlign textAlign;
   final TextStyle? style;
   final Widget? textBoxTop;
-
   final int? maxLines;
 
-  const SingleLineEdit({
+  const MinimalTextEdit({
     super.key,
     required this.textLine,
-    required this.title,
-    required this.label,
-    required this.hintText,
     required this.textAlign,
+    this.title = "",
+    this.hintText,
     this.textBoxTop,
     this.maxLines,
     this.style,
   });
 
   @override
-  EditTextLineState createState() => EditTextLineState();
+  MinimalTextEditState createState() => MinimalTextEditState();
 }
 
-class EditTextLineState extends State<SingleLineEdit> {
+class MinimalTextEditState extends State<MinimalTextEdit> {
   late TextEditingController _textEditingController;
 
   late int charCount;
@@ -83,7 +80,7 @@ class EditTextLineState extends State<SingleLineEdit> {
             hintText: widget.hintText,
             border: InputBorder.none,
           ),
-          maxLines: widget.maxLines, // Set maxLines to null for multiline
+          maxLines: widget.maxLines,
         ),
       ),
     );

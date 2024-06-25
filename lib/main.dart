@@ -5,16 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'singleline_edit.dart';
 
-File? INPUT_FILE;
-
 void main(List<String> args) {
-  if (args.isNotEmpty) {
-    if (File(args.first).existsSync()) {
-      INPUT_FILE = File(args.first);
-    } else {
-      print('File was provided as input argument, but does not exist');
-    }
-  }
   runApp(const MyApp());
 }
 
@@ -27,7 +18,6 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   MyAppState({Key? key});
-  File? file;
 
   @override
   void initState() {
@@ -45,35 +35,17 @@ class MyAppState extends State<MyApp> {
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        textTheme: const TextTheme(
-          displayLarge: TextStyle(color: Colors.grey),
-          displayMedium: TextStyle(color: Colors.grey),
-          displaySmall: TextStyle(color: Colors.grey),
-          headlineLarge: TextStyle(color: Colors.grey),
-          headlineMedium: TextStyle(color: Colors.grey),
-          headlineSmall: TextStyle(color: Colors.grey),
-          titleLarge: TextStyle(color: Colors.grey),
-          titleMedium: TextStyle(color: Colors.grey),
-          titleSmall: TextStyle(color: Colors.grey),
-          bodyLarge: TextStyle(color: Colors.grey),
-          bodyMedium: TextStyle(color: Colors.grey),
-          bodySmall: TextStyle(color: Colors.grey),
-          labelLarge: TextStyle(color: Colors.grey),
-          labelMedium: TextStyle(color: Colors.grey),
-          labelSmall: TextStyle(color: Colors.grey),
-        ),
-        /* dark theme settings */
+        textTheme: const TextTheme(),
       ),
       themeMode: ThemeMode.system,
       home: SafeArea(
         child: Scaffold(
           body: Builder(
-            builder: (context) => SingleLineEdit(
+            builder: (context) => const MinimalTextEdit(
               textLine: 'Hello world',
-              title: 'Test File',
-              hintText: '',
-              label: 'Block',
-              textAlign: TextAlign.start,
+              title: 'Testing',
+              hintText: 'Type Here',
+              textAlign: TextAlign.center,
               maxLines: null,
             ),
           ),
